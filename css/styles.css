@@ -99,8 +99,11 @@
 
   .login-area {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+  }
+
+  .login-area > p{
+    margin-right: 1rem;
   }
 
   .login-button:hover {
