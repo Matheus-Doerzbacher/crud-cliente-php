@@ -1,128 +1,45 @@
-<!doctype html>
-<html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cadastro de Cliente</title>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <link rel="stylesheet" href="../css/styles.css"/>
-  </head>
-  <body>
-    <div class="container">
-      <div class="form-section">
-        <h2>Cadastro de Cliente</h2>
-        <form id="cadastro-form" style="width: 100%" onsubmit="validar()" method="POST">
+<!DOCTYPE html>
+<html lang="pt-BR">
 
-          <div class="form-row">
-            <div>
-              <label for="email">Email:</label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                required
-                placeholder="youremail@gmail.com"
-              />
-            </div>
-          </div>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>P·gina de Login</title>
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="styles.css">
+</head>
 
-          <div class="form-row">
-            <div>
-              <label for="senha">Senha:</label>
-              <input
-                type="password"
-                id="senha"
-                name="senha"
-                required
-                placeholder="4+ characters"
-              />
-            </div>
+<body>
+	<div class="container d-flex justify-content-center align-items-center min-vh-100">
+		<div class="card" style="width: 100%; max-width: 400px;">
+			<div class="card-body">
+				<h5 class="card-title text-center">Login</h5>
+				<p class="text-center">Insira seus dados de conta</p>
+				<form id="cadastro-form">
+					<div class="form-group">
+						<label for="username" class="form-label">Usu·rio <span class="obrigatorio">*</span></label>
+						<input type="text" class="form-control" id="username" required>
+					</div>
+					<div class="form-group">
+						<label for="password" class="form-label">Senha <span class="obrigatorio">*</span></label>
+						<input type="password" class="form-control" id="password" required>
+					</div>
+					<button type="submit" class="btn btn-primary btn-block">Entrar</button>
+				</form>
+				<div class="text-center mt-3">
+					<a href="#">Esqueceu sua senha?</a>
+				</div>
+				<div class="text-center mt-2">
+					<p class="d-inline">Ainda n„o tem uma conta? </p>
+					<a href="../cadastro/index.html" class="ml-1">Criar uma conta</a>
+				</div>
+			</div>
+		</div>
+	</div>
 
-          <button type="submit" id="cadastro-button">Entrar</button>
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
 
-          <div class="login-area">
-            <p class="login-text">Ainda n√£o possui uma conta?</p>
-            <button
-              class="login-button"
-              type="button"
-              onclick="window.location.href='../cadastro/index.html'";
-            >
-              Cadastrar
-            </button>
-          </div>
-        </form>
-        <div id="result" style="color: red"></div>
-      </div>
-    </div>
-
-    <script type="text/javascript">
-      function consultaCEP() {
-        var cep = document.getElementById('cep');
-
-        url = 'https://viacep.com.br/ws/' + cep.value + '/json/';
-        fetch(url)
-          .then(response => response.json())
-          .then(result => {
-            console.log(result);
-            document.getElementById('endereco').value = result.logradouro;
-            document.getElementById('bairro').value = result.bairro;
-            document.getElementById('cidade').value = result.localidade;
-            document.getElementById('estado').value = result.estado;
-          })
-          .catch(error => {
-            alert('CEP n√£o encontrado');
-          });
-      }
-
-      function validar(event) {
-        event.preventDefault();
-        var nome = document.getElementById('nome');
-        var sobrenome = document.getElementById('sobrenome');
-        var cpf = document.getElementById('cpf');
-        var rg = document.getElementById('rg');
-        var email = document.getElementById('email');
-        var telefone = document.getElementById('telefone');
-        var senha = document.getElementById('senha');
-        var confirSenha = document.getElementById('confir-senha');
-        var cep = document.getElementById('cep');
-        var endereco = document.getElementById('endereco');
-        var numero = document.getElementById('numero');
-        var bairro = document.getElementById('bairro');
-        var cidade = document.getElementById('cidade');
-        var estado = document.getElementById('estado');
-        var imagem = document.getElementById('imagem');
-
-        $.ajax({
-          url: 'cadastro_usuario.php',
-          type: 'post',
-          data: {
-            nome: nome.value,
-            sobrenome: sobrenome.value,
-            cpf: cpf.value,
-            rg: rg.value,
-            email: email.value,
-            telefone: telefone.value,
-            senha: senha.value,
-            confirSenha: confirSenha.value,
-            cep: cep.value,
-            endereco: endereco.value,
-            numero: numero.value,
-            bairro: bairro.value,
-            cidade: cidade.value,
-            estado: estado.value
-          },
-          success: function (response) {
-            if (response.includes('sucesso')) {
-              window.location.href = '../login/index.html';
-            } else {
-              results.innerHTML = response;
-            }
-          },
-          error: function (xhr, status, error) {
-            results.innerHTML = 'Erro ao cadastrar: ' + error;
-          }
-        });
-      }
-    </script>
-  </body>
 </html>
