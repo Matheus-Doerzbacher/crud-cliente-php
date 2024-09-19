@@ -4,12 +4,9 @@ session_start();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = $_POST['email'];
-    $senha = $_POST['senha'];
+    $senha = $_POST['password'];
 
-    // $myPass = password_hash('123123', PASSWORD_BCRYPT);
-    // echo $myPass;
-
-    $sql = "SELECT id, nome, senha FROM usuarios WHERE email = ?";
+    $sql = "SELECT id, email, senha FROM usuarios WHERE email = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param('s', $email);
     $stmt->execute();
@@ -24,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_SESSION['usuario_nome'] = $nome;
             echo "Login realizado com sucesso!";
         } else {
-            echo "Senha incorreta";
+            echo $senha;
         }
     } else {
         echo "Nenhum usuario encontrado com esse email";
