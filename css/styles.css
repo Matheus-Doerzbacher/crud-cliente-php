@@ -12,7 +12,8 @@ body {
 	background-color: #f8f9fa;
 }
 
-.container-p {
+.container-cadastro {
+	min-width: 50%;
 	max-width: 60vw;
 	min-height: 70vh;
 	padding: 20px;
@@ -43,4 +44,8 @@ body {
 
 .obrigatorio {
 	color: red;
+}
+
+input.form-control::placeholder {
+	color: rgba(173, 173, 173, .7);
 }
