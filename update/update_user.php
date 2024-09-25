@@ -44,6 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="shortcut icon" href="../assets/user.jpg" type="image/jpeg">
 
     <title>Editar Usuários</title>
 </head>
@@ -125,8 +126,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             <input type="file" class="form-control" id="imagem" name="imagem" accept="image/*" />
         </div>
 
-        <button type="button" id="updateButton" class="btn btn-primary">Atualizar Usuário</button>
-        <button type="button" class></button>
+        <button type="button" id="update-button" class="btn btn-primary">Atualizar Usuário</button>
+        <button type="button" class="btn btn-secondary" onclick="window.location.href='../home/search_usuario.php';">Cancelar</button>
+        <button type="button" id="deleteButton" class="btn btn-danger">Excluir meu Usuário</button>
     </form>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
@@ -134,7 +136,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
     <script type="text/javascript">
         $(document).ready(function() {
-            $('#updateButton').on('click', function() {
+            $('#update-button').on('click', function() {
                 if (validar()) {
                     var formData = new FormData($('#form_update_usuario')[0]);
 
@@ -148,6 +150,36 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                             alert(response);
                             if (response.toLowerCase().includes('sucesso')) {
                                 window.location.href = '../home/search_usuario.php';
+                            }
+                        },
+                        error: function() {
+                            alert('Erro ao atualizar o usuário. Por favor, tente novamente.');
+                        }
+                    });
+                }
+            });
+
+            function validar() {
+                // Faça validações necessárias do lado do cliente
+                return true;
+            }
+        });
+
+        $(document).ready(function() {
+            $('#deleteButton').on('click', function() {
+                if (validar()) {
+                    var formData = new FormData($('#form_update_usuario')[0]);
+                    
+
+                    $.ajax({
+                        url: '../delete/delete_user.php',
+                        type: 'POST',
+                        data: formData,
+                        contentType: false,
+                        processData: false,
+                        success: function(response) {
+                            if (response.toLowerCase().includes('sucesso')) {
+                                window.location.href = '../login';
                             }
                         },
                         error: function() {

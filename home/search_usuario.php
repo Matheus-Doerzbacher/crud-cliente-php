@@ -25,6 +25,7 @@ $urlImage_usuario = $_SESSION["usuario_imagem"];
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
   <link rel="icon" type="image/png" href="../assets/user.png">
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <link rel="shortcut icon" href="../assets/user.jpg" type="image/jpeg">
 
   <title>Home Page</title>
 
