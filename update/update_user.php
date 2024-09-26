@@ -133,69 +133,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $('#update-button').on('click', function() {
-                if (validar()) {
-                    var formData = new FormData($('#form_update_usuario')[0]);
-
-                    $.ajax({
-                        url: 'update_usuario_function.php',
-                        type: 'POST',
-                        data: formData,
-                        contentType: false,
-                        processData: false,
-                        success: function(response) {
-                            alert(response);
-                            if (response.toLowerCase().includes('sucesso')) {
-                                window.location.href = '../home/search_usuario.php';
-                            }
-                        },
-                        error: function() {
-                            alert('Erro ao atualizar o usuário. Por favor, tente novamente.');
-                        }
-                    });
-                }
-            });
-
-            function validar() {
-                // Faça validações necessárias do lado do cliente
-                return true;
-            }
-        });
-
-        $(document).ready(function() {
-            $('#deleteButton').on('click', function() {
-                if (validar()) {
-                    var formData = new FormData($('#form_update_usuario')[0]);
-                    
-
-                    $.ajax({
-                        url: '../delete/delete_user.php',
-                        type: 'POST',
-                        data: formData,
-                        contentType: false,
-                        processData: false,
-                        success: function(response) {
-                            if (response.toLowerCase().includes('sucesso')) {
-                                window.location.href = '../login';
-                            }
-                        },
-                        error: function() {
-                            alert('Erro ao atualizar o usuário. Por favor, tente novamente.');
-                        }
-                    });
-                }
-            });
-
-            function validar() {
-                // Faça validações necessárias do lado do cliente
-                return true;
-            }
-        });
-    </script>
-
+    <script src="ajax/ajaxFunctions.js"></script>
 </body>
 
 </html>

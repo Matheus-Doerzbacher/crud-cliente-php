@@ -157,9 +157,6 @@ $urlImage_usuario = $_SESSION["usuario_imagem"];
     </table>
   </div>
 
-  <script></script>
-  </script>
-
 </body>
 
 </html>

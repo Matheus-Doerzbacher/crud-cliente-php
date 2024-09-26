@@ -27,7 +27,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_FILES['imagem']) && $_FILES['imagem']['error'] == UPLOAD_ERR_OK) {
         $imagem = $_FILES['imagem'];
         $imagemNome = basename($imagem['name']);
-        #$imagemCaminho = 'path/to/uploads/' . $imagemNome;
         $imagemCaminho = '../uploads/' . $imagemNome;
 
         // Mova o arquivo para o diretório de uploads
