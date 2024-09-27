@@ -133,7 +133,7 @@ $urlImage_usuario = $_SESSION["usuario_imagem"];
 
         if ($result->num_rows > 0) {
           while ($row = $result->fetch_assoc()) {
-            echo "<tr onclick=\"editUser({$row['id']})\">";
+            echo "<tr onclick=\"editUser({$row['id']})\" style=\"cursor: pointer;\">";
             echo '<th>' . $row["id"] . '</th>';
             echo '<td>' . $row["nome"] . '</td>';
             echo '<td>' . $row["sobrenome"] . '</td>';
