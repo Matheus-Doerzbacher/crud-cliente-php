@@ -98,7 +98,6 @@ $urlImage_usuario = $_SESSION["usuario_imagem"];
   <br>
 
   <h1 class="mt-5">Lista de Usuarios</h1>
-
   <!-- JavaScript (Opcional) -->
   <!-- jQuery primeiro, depois Popper.js, depois Bootstrap JS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
@@ -126,7 +125,7 @@ $urlImage_usuario = $_SESSION["usuario_imagem"];
       </thead>
       <tbody>
 
-        <?php
+      <?php
         include('../connection.php');
 
         $sql = "SELECT * FROM usuarios";
@@ -134,9 +133,9 @@ $urlImage_usuario = $_SESSION["usuario_imagem"];
 
         if ($result->num_rows > 0) {
           while ($row = $result->fetch_assoc()) {
-            echo '<tr>';
+            echo "<tr onclick=\"editUser({$row['id']})\">";
             echo '<th>' . $row["id"] . '</th>';
-            echo '<th>' . $row["nome"] . '</th>';
+            echo '<td>' . $row["nome"] . '</td>';
             echo '<td>' . $row["sobrenome"] . '</td>';
             echo '<td>' . $row["cpf"] . '</td>';
             echo '<td>' . $row["rg"] . '</td>';
@@ -157,7 +156,10 @@ $urlImage_usuario = $_SESSION["usuario_imagem"];
     </table>
   </div>
 
-  <script></script>
+  <script>
+    function editUser(id) {
+      window.location.href = '../update/update_user.php?id=' + id;
+    }
   </script>
 
 </body>
